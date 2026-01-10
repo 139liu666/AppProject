@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Cinspot</string>
+    <string name="task_1">task1</string>
+    <string name="task_2">task2</string>
+    <string name="task_3">task3</string>
+    <string name="title_activity_compose">ComposeActivity</string>
+    <string name="title_activity_recommend">RecommendActivity</string>
+</resources>
