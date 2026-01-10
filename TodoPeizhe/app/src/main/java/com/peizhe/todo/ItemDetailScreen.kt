@@ -81,7 +81,7 @@ fun ItemDetailScreen(item: Item,viewModel: ItemsViewModel, onBack: () -> Unit) {
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "Rating: ${item.voteAverage} (${item.voteCount} votes)",
+                    text = "Rating: ${item.voteAverage}",
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Row {
