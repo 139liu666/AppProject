@@ -100,3 +100,7 @@ data class LoginBody(
     @SerialName("password") val password: String,
     @SerialName("request_token") val requestToken: String
 )
+@Serializable
+data class RatingBody(
+    @SerialName("value") val value: Double
+)

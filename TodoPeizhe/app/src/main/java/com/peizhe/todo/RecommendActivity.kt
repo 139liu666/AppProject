@@ -1,6 +1,7 @@
 package com.peizhe.todo
 
 import android.R.attr.name
+import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.Icon
 import android.net.Uri
@@ -21,6 +22,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
@@ -126,6 +128,7 @@ class RecommendActivity : ComponentActivity() {
 @Composable
 fun MyApp(viewModel: ItemsViewModel) {
     val backStack = remember { mutableStateListOf<Any>(ItemsNavScreen) }
+    val homeListState = rememberLazyGridState()
     val context = LocalContext.current
     val viewModel: ItemsViewModel = viewModel
 
@@ -152,6 +155,15 @@ fun MyApp(viewModel: ItemsViewModel) {
                     if (currentScreenType == AppScreen.Home) {
                         TopAppBar(title = { Text("Movie Explorer") },
                                  actions = {
+                                     IconButton(onClick = {
+                                         val intent = Intent(context, ComposeActivity::class.java)
+                                         context.startActivity(intent)
+                                     }) {
+                                         Icon(
+                                             imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+                                             contentDescription = "Go to todolist app"
+                                         )
+                                     }
                                     IconButton(onClick = { viewModel.logout() }) {
                                         Icon(Icons.AutoMirrored.Filled.ExitToApp, contentDescription = "Logout")
                                     }
@@ -265,6 +277,7 @@ fun MyApp(viewModel: ItemsViewModel) {
                     ItemGridScreen(
                         items = finalDisplayList,
                         viewModel=viewModel,
+                        listState = homeListState,
                         modifier = Modifier.padding(innerPadding),
                         onMovieClick = { item ->
                             backStack.add(DetailItemScreen(item))

@@ -11,6 +11,7 @@ import com.peizhe.todo.list.CreateSessionBody
 import com.peizhe.todo.list.FavoriteBody
 import com.peizhe.todo.list.Item
 import com.peizhe.todo.list.LoginBody
+import com.peizhe.todo.list.RatingBody
 import com.peizhe.todo.list.WatchlistBody
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -280,6 +281,30 @@ class ItemsViewModel(application: Application): AndroidViewModel(application) {
                     val allResults = response.body()?.results ?: emptyList()
                     itemsStateFlow.value = allResults
                 }
+        }
+    }
+
+    fun rateMedia(item: Item, ratingValue: Double) {
+        viewModelScope.launch {
+            val isMovie = item.title != null
+            val body = RatingBody(ratingValue)
+
+            try {
+                val response = if (isMovie) {
+                    webService.rateMovie(item.id, body)
+                } else {
+                    webService.rateTV(item.id, body)
+                }
+
+                if (response.isSuccessful) {
+                    Log.d("API", "Rating success: $ratingValue")
+                    // 这里可以加一个 Toast 提示或者更新本地状态
+                } else {
+                    Log.e("API", "Rating failed: ${response.code()}")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 

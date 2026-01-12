@@ -5,6 +5,7 @@ import com.peizhe.todo.list.CreateSessionBody
 import com.peizhe.todo.list.FavoriteBody
 import com.peizhe.todo.list.ListResponse
 import com.peizhe.todo.list.LoginBody
+import com.peizhe.todo.list.RatingBody
 import com.peizhe.todo.list.RequestTokenResponse
 import com.peizhe.todo.list.SessionResponse
 import com.peizhe.todo.list.WatchlistBody
@@ -80,4 +81,16 @@ interface MoviesWebService {
 
     @POST("3/authentication/token/validate_with_login")
     suspend fun validateWithLogin(@Body body: LoginBody): Response<RequestTokenResponse>
+
+    @POST("3/movie/{movie_id}/rating")
+    suspend fun rateMovie(
+        @Path("movie_id") movieId: Int,
+        @Body body: RatingBody
+    ): Response<Unit>
+
+    @POST("3/tv/{tv_id}/rating")
+    suspend fun rateTV(
+        @Path("tv_id") tvId: Int,
+        @Body body: RatingBody
+    ): Response<Unit>
 }
