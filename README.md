@@ -1,5 +1,5 @@
 # AppProject(Movies Recommandation)
-### Press arrow go to the todolist activity   
+### Press arrow go to the todolist activity(The left arrow in the top-right corner)   
 <img width="218" height="536" alt="截屏2026-01-12 17 33 00" src="https://github.com/user-attachments/assets/d3604364-42f0-4346-853c-529854d2b67e" />
 
 
