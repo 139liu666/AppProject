@@ -5,6 +5,7 @@
 
 -This is a movie data application developed with **Jetpack Compose**.   
 -It uses a **remote API** for authentication and data storage, and also stores **login** data locally.   
+-There are two ways to **log in**: enter your username and password directly, or click the button below to go to the official website to register and then be redirected to log in.     
 <img width="218" height="536" alt="截屏2026-01-10 21 36 24" src="https://github.com/user-attachments/assets/e6af0e21-54fe-498c-9f87-d62711214821" />
 
 -The app can display the currently most **popular** movies and TV series.   
